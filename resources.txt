@@ -10,5 +10,5 @@ https://www.sberbank.ru/
 https://www.rosbank.ru/
 https://www.tinkoff.ru/
 https://api.developer.sber.ru/product/SberbankID
-109.207.1.118
-109.207.1.97 
+https://109.207.1.118
+https://109.207.1.97 
