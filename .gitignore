@@ -2,3 +2,5 @@
 /aws/.terraform/
 /aws/terraform.tfstate
 /aws/terraform.tfstate.backup
+
+bombardier_dst.yaml
