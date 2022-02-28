@@ -2,8 +2,9 @@
 Fight agains propoganda
 
 # If you have kubertnetes cluster `./run_all_kuber.sh`
-Docs in `docs/digital_ocean_kubernetes.md`
-easiest way
+[Kubernetes Docs](docs/digital_ocean_kubernetes.md)
+
+The easiest way
 
 `docker run -d --rm alpine/bombardier -c 1000 -d 60000h -l http://kremlin.ru`
 <br>
