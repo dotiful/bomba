@@ -38,11 +38,17 @@ data "template_file" "init" {
     dockerfile = file("${path.module}/Dockerfile")
     dockercompose = file("${path.module}/docker-compose.yml")
     entrypoint = file("${path.module}/docker_entrypoint.sh")
+    config = file("${path.module}/config.json")
+    agent_url = var.region == "us-east-1" ? "https://s3.amazonaws.com/amazoncloudwatch-agent/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb" : "https://s3.${var.region}.amazonaws.com/amazoncloudwatch-agent-${var.region}/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb"
   }
 }
 
 data "aws_iam_policy" "ssm_core" {
   name = "AmazonSSMManagedInstanceCore"
+}
+
+data "aws_iam_policy" "logs_access" {
+  name = "CloudWatchLogsFullAccess"
 }
 
 resource "aws_iam_role" "ssm_connect" {
@@ -60,7 +66,7 @@ resource "aws_iam_role" "ssm_connect" {
       },
     ]
   })
-  managed_policy_arns = [data.aws_iam_policy.ssm_core.arn]
+  managed_policy_arns = [data.aws_iam_policy.ssm_core.arn, data.aws_iam_policy.logs_access.arn]
 }
 
 resource "aws_iam_instance_profile" "ssm_connect" {
@@ -68,6 +74,9 @@ resource "aws_iam_instance_profile" "ssm_connect" {
   role = aws_iam_role.ssm_connect.name
 }
 
+resource "aws_cloudwatch_log_group" "bombardier" {
+  name = "bombardier"
+}
 
 resource "aws_launch_template" "main" {
   name_prefix   = "example"
