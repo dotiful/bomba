@@ -1,3 +1,22 @@
+# Українська
+0. Встановіть docker і kubectl на вашу систему 
+2. Спочатку створіть Kubernetes cluster on digital ocean
+3. Встановіть doctl [Інструкція від Digital Ocean](https://docs.digitalocean.com/reference/doctl/how-to/install/)
+4. Сконфігуруйте доступ до вашого кластера 
+`doctl kubernetes cluster kubeconfig save fb4f92a4-60cd-4b0d-a1b0-123qwerty` Слідуйте інструкціям digital ocean
+6. Перевірте що ви підключені до правильного кластера
+```bash
+kubectl config current-context
+#=> should return name of digital ocean kubernetes cluster
+```
+4. Змініть в resources.txt і поставте список цілей
+5. В файлі `run_all_kuber.sh` поставте замість REPLICAS число одночасних процесів для атаки. 
+6. Запустіть `./run_all_kuber.sh` щоб почати атаку
+7. Запустіть `./stop_all_kuber.sh` щоб зупинити атаку
+
+
+
+# English version
 1. Create kubernetes cluster
 2. Follow digital ocean to configure local kuberentes cluster via doctl
 3. Check that you connected to correct kubernetes cluster
