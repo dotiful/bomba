@@ -8,7 +8,6 @@ https://fsb.ru
 https://www.rt.com/
 https://tass.ru
 https://vesti.ru
-https://yandex.ru
 https://iz.ru
 https://lenta.ru
 https://vgtrk.ru
@@ -31,7 +30,6 @@ https://rusnext.ru/
 http://life.ru/
 https://www.mid-dnr.su/
 https://www.5-tv.ru/live/
-http://zvezda.ru/
 https://www.politnavigator.net/
 https://russian.rt.com/
 http://lt.sputniknews.ru/
