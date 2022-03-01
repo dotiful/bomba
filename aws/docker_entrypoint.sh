@@ -1,5 +1,4 @@
 #!/bin/sh
 curl --output resources_all.txt -fsSL $RESOURCES_URL
 resource=$(shuf -n 1 resources_all.txt)
-echo $resource
-bombardier -c ${CONNECTIONS} -d ${INTERVAL} --http1 -t 1s -p i,r -l $resource
+bombardier -c ${CONNECTIONS} -s -d ${INTERVAL} --http1 -t 1s -o json -p r -l $resource

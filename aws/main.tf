@@ -46,8 +46,6 @@ data "template_file" "init" {
     dockerfile = file("${path.module}/Dockerfile")
     dockercompose = file("${path.module}/docker-compose.yml")
     entrypoint = file("${path.module}/docker_entrypoint.sh")
-    config = file("${path.module}/config.json")
-    agent_url = var.region == "us-east-1" ? "https://s3.amazonaws.com/amazoncloudwatch-agent/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb" : "https://s3.${var.region}.amazonaws.com/amazoncloudwatch-agent-${var.region}/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb"
     scale = var.scale_on_instance
   }
 }
@@ -84,10 +82,13 @@ resource "aws_iam_instance_profile" "ssm_connect" {
 }
 
 resource "aws_cloudwatch_log_group" "bombardier" {
-  name = "bombardier_${var.region}"
+  count = var.region == "us-east-1" ? 1 : 0
+  name = "bombardier"
+  retention_in_days = 1
 }
 
 resource "aws_launch_template" "main" {
+  depends_on    = [aws_cloudwatch_log_group.bombardier] 
   name_prefix   = "example"
   image_id      = data.aws_ami.ubuntu.id
   instance_type = "c5.large"
