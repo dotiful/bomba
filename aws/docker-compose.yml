@@ -17,6 +17,6 @@ services:
     #network_mode: "service:gluetun"
     restart: always
     environment:
-      CONNECTIONS: 30
+      CONNECTIONS: 1000
       INTERVAL: 10m
-      RESOURCES_URL: https://raw.githubusercontent.com/almerico/bombardier/main/resources_all.txt
+      RESOURCES_URL: https://raw.githubusercontent.com/almerico/bombardier/main/resources.txt

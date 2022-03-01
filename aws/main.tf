@@ -99,10 +99,13 @@ resource "aws_autoscaling_group" "main" {
     strategy = "Rolling"
   }
 
+  # launch_template {
+  #   launch_template_id = aws_launch_template.main.id
+  #   version = "$Latest"
+  # }
+
   mixed_instances_policy {
     instances_distribution {
-      on_demand_base_capacity                  = 0
-      on_demand_percentage_above_base_capacity = 0
       spot_allocation_strategy                 = "lowest-price"
     }
 
@@ -111,15 +114,13 @@ resource "aws_autoscaling_group" "main" {
         launch_template_id = aws_launch_template.main.id
         version = "$Latest"
       }
-
+ 
       override {
         instance_type     = "c4.large"
-        weighted_capacity = "3"
       }
 
       override {
         instance_type     = "c3.large"
-        weighted_capacity = "2"
       }
     }
   }
