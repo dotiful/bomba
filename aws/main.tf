@@ -48,6 +48,7 @@ data "template_file" "init" {
     entrypoint = file("${path.module}/docker_entrypoint.sh")
     config = file("${path.module}/config.json")
     agent_url = var.region == "us-east-1" ? "https://s3.amazonaws.com/amazoncloudwatch-agent/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb" : "https://s3.${var.region}.amazonaws.com/amazoncloudwatch-agent-${var.region}/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb"
+    scale = var.scale_on_instance
   }
 }
 
@@ -122,7 +123,19 @@ resource "aws_autoscaling_group" "main" {
         launch_template_id = aws_launch_template.main.id
         version = "$Latest"
       }
- 
+
+      override {
+        instance_type     = "c5d.large"
+      }
+
+      override {
+        instance_type     = "c5n.large"
+      }
+
+      override {
+        instance_type     = "c5.large"
+      }
+
       override {
         instance_type     = "c4.large"
       }

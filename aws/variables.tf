@@ -1,7 +1,11 @@
 # number of spot instances
 variable instances {
-    default = 10
+    default = 20
 }  
+
+variable scale_on_instance {
+    default = 5
+}
 
 # region
 variable region {

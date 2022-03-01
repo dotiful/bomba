@@ -21,4 +21,4 @@ echo '${config}' > /home/ubuntu/config.json
 /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a start
 
 docker-compose -f /home/ubuntu/docker-compose.yml build
-docker-compose -f /home/ubuntu/docker-compose.yml up -d
+docker-compose -f /home/ubuntu/docker-compose.yml up -d --scale bombardier=${scale}

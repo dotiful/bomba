@@ -13,7 +13,6 @@ services:
   bombardier:
     build: .
     image: bombardier
-    container_name: bombardier
     #network_mode: "service:gluetun"
     restart: always
     environment:
