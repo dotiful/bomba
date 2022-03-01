@@ -22,3 +22,4 @@ https://rts-tender.ru
 https://gz.lot-online.ru
 https://tektorg.ru
 https://etpgpb.ru
+https://online.gpb.ru/api/profile/login/init
