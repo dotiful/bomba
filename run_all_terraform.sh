@@ -12,10 +12,10 @@ if [ $# -ne 2 ]
   then
     echo "Waiting for 1 arguments "
     echo "Example:"
-    echo "./run_all_terraform.sh 1212121212
+    echo "./run_all_terraform.sh 1212121212"
 fi
 
-echo Installing $1 
+echo "Installing $1"
 
 
 
