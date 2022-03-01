@@ -61,7 +61,7 @@ data "aws_iam_policy" "logs_access" {
 }
 
 resource "aws_iam_role" "ssm_connect" {
-  name = "ssm_connect"
+  name = "ssm_connect_${var.region}"
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
@@ -79,12 +79,12 @@ resource "aws_iam_role" "ssm_connect" {
 }
 
 resource "aws_iam_instance_profile" "ssm_connect" {
-  name = "ssm_connect"
+  name = "ssm_connect_${var.region}"
   role = aws_iam_role.ssm_connect.name
 }
 
 resource "aws_cloudwatch_log_group" "bombardier" {
-  name = "bombardier"
+  name = "bombardier_${var.region}"
 }
 
 resource "aws_launch_template" "main" {
