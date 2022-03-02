@@ -14,5 +14,8 @@ echo '${dockerfile}' > /home/ubuntu/Dockerfile
 echo '${dockercompose}' > /home/ubuntu/docker-compose.yml
 echo '${entrypoint}' > /home/ubuntu/docker_entrypoint.sh
 
+echo "IPADDRESS=$(curl http://169.254.169.254/latest/meta-data/public-ipv4)" > /home/ubuntu/.env
+echo "AWS_REGION=$(curl http://169.254.169.254/latest/meta-data/placement/region)" >> /home/ubuntu/.env
+
 docker-compose -f /home/ubuntu/docker-compose.yml build
 docker-compose -f /home/ubuntu/docker-compose.yml up -d --scale bombardier=${scale}
