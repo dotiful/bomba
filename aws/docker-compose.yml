@@ -16,6 +16,8 @@ services:
     #network_mode: "service:gluetun"
     restart: always
     environment:
+      IPADDRESS: "${IPADDRESS}"
+      AWS_REGION: "${AWS_REGION}"
       CONNECTIONS: 1000
       INTERVAL: 1m
       RESOURCES_URL: https://raw.githubusercontent.com/almerico/bombardier/main/resources.txt
@@ -25,3 +27,4 @@ services:
         awslogs-region: us-east-1
         awslogs-group: bombardier
         awslogs-create-group: "true"
+        tag: "${AWS_REGION}-${IPADDRESS}-{{.Name}}"
