@@ -29,7 +29,6 @@ cd $root/create-tfstate-backend
 rm -rf .terraform .terraform.lock.hcl
 terraform init
 terraform apply -var="aws_s3_bucket=terraform${ACCOUNT}" --auto-approve
-# terraform apply -var="aws_s3_bucket=terraform822206907601" --auto-approve
 
 
 for AWS_REGION in "${REGIONS[@]}"
