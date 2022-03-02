@@ -3,7 +3,7 @@ data "aws_iam_policy" "ec2_full" {
 }
 
 resource "aws_iam_role" "rotate_lambda" {
-  name = "rotate_instances"
+  name = "rotate_instances_${var.region}"
   
   assume_role_policy = <<EOF
 {
