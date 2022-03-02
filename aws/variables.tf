@@ -1,6 +1,6 @@
 # number of spot instances
 variable instances {
-    default = 20
+    default = 32
 }  
 
 variable scale_on_instance {

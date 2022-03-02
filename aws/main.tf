@@ -17,7 +17,7 @@ terraform {
 
 # Configure the AWS Provider
 provider "aws" {
-  region = "eu-west-1"
+  # region = "eu-west-1"
 }
 
 data "aws_ami" "ubuntu" {
@@ -90,7 +90,7 @@ resource "aws_cloudwatch_log_group" "bombardier" {
 resource "aws_launch_template" "main" {
   name_prefix   = "example"
   image_id      = data.aws_ami.ubuntu.id
-  instance_type = "c5.large"
+  instance_type = "t2.micro"
   user_data = base64encode(data.template_file.init.rendered)
   iam_instance_profile {
     name = aws_iam_instance_profile.ssm_connect.name
@@ -98,6 +98,7 @@ resource "aws_launch_template" "main" {
 }
 
 resource "aws_autoscaling_group" "main" {
+  force_delete        = true
   capacity_rebalance  = true
   desired_capacity    = var.instances
   max_size            = var.instances
@@ -108,41 +109,41 @@ resource "aws_autoscaling_group" "main" {
     strategy = "Rolling"
   }
 
-  # launch_template {
-  #   launch_template_id = aws_launch_template.main.id
-  #   version = "$Latest"
-  # }
-
-  mixed_instances_policy {
-    instances_distribution {
-      spot_allocation_strategy                 = "lowest-price"
-    }
-
-    launch_template {
-      launch_template_specification {
-        launch_template_id = aws_launch_template.main.id
-        version = "$Latest"
-      }
-
-      override {
-        instance_type     = "c5d.large"
-      }
-
-      override {
-        instance_type     = "c5n.large"
-      }
-
-      override {
-        instance_type     = "c5.large"
-      }
-
-      override {
-        instance_type     = "c4.large"
-      }
-
-      override {
-        instance_type     = "c3.large"
-      }
-    }
+  launch_template {
+    id = aws_launch_template.main.id
+    version = "$Latest"
   }
+
+  # mixed_instances_policy {
+  #   instances_distribution {
+  #     spot_allocation_strategy                 = "lowest-price"
+  #   }
+
+  #   launch_template {
+  #     launch_template_specification {
+  #       launch_template_id = aws_launch_template.main.id
+  #       version = "$Latest"
+  #     }
+
+  #     override {
+  #       instance_type     = "c5d.large"
+  #     }
+
+  #     override {
+  #       instance_type     = "c5n.large"
+  #     }
+
+  #     override {
+  #       instance_type     = "c5.large"
+  #     }
+
+  #     override {
+  #       instance_type     = "c4.large"
+  #     }
+
+  #     override {
+  #       instance_type     = "c3.large"
+  #     }
+  #   }
+  # }
 }
